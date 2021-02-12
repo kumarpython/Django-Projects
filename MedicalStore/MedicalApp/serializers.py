@@ -85,7 +85,7 @@ class CompanyAccountSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         response = super().to_representation(instance)
-        response['company'] = CompanySerliazer(instance.company_id).data
+        response['company'] = CompanySerializer(instance.company_id).data
         return response
 
 
@@ -110,3 +110,4 @@ class BillDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model=BillDetails
         fields="__all__"
+

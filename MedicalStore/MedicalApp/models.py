@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Company(models.Model):
     id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=255)
@@ -11,7 +10,6 @@ class Company(models.Model):
     description=models.CharField(max_length=255)
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
-
 
 class Medicine(models.Model):
     id=models.AutoField(primary_key=True)
@@ -32,7 +30,6 @@ class Medicine(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class MedicalDetails(models.Model):
     id=models.AutoField(primary_key=True)
     medicine_id=models.ForeignKey(Medicine,on_delete=models.CASCADE)
@@ -43,7 +40,6 @@ class MedicalDetails(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class Employee(models.Model):
     id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=255)
@@ -53,7 +49,6 @@ class Employee(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class Customer(models.Model):
     id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=255)
@@ -62,13 +57,11 @@ class Customer(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class Bill(models.Model):
     id=models.AutoField(primary_key=True)
     customer_id=models.ForeignKey(Customer,on_delete=models.CASCADE)
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
-
 
 class EmployeeSalary(models.Model):
     id=models.AutoField(primary_key=True)
@@ -78,7 +71,6 @@ class EmployeeSalary(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class BillDetails(models.Model):
     id=models.AutoField(primary_key=True)
     bill_id=models.ForeignKey(Bill,on_delete=models.CASCADE)
@@ -87,7 +79,6 @@ class BillDetails(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class CustomerRequest(models.Model):
     id=models.AutoField(primary_key=True)
     customer_name=models.CharField(max_length=255)
@@ -95,8 +86,8 @@ class CustomerRequest(models.Model):
     medicine_details=models.CharField(max_length=255)
     status=models.BooleanField(default=False)
     added_on=models.DateTimeField(auto_now_add=True)
+    prescription=models.FileField(default="")
     objects=models.Manager()
-
 
 class CompanyAccount(models.Model):
     choices=((1,"Debit"),(2,"Credit"))
@@ -110,7 +101,6 @@ class CompanyAccount(models.Model):
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
-
 class CompanyBank(models.Model):
     id=models.AutoField(primary_key=True)
     bank_account_no=models.CharField(max_length=255)
@@ -118,7 +108,6 @@ class CompanyBank(models.Model):
     company_id=models.ForeignKey(Company,on_delete=models.CASCADE)
     added_on=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
-
 
 class EmployeeBank(models.Model):
     id=models.AutoField(primary_key=True)

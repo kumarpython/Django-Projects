@@ -1,5 +1,5 @@
 """
-WSGI config for Medical_Store_Management_System project.
+WSGI config for MedicalStore project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Medical_Store_Management_System.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MedicalStore.settings')
 
 application = get_wsgi_application()

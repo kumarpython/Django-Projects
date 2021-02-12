@@ -1,5 +1,7 @@
 from django.contrib import admin
-from DjangoMedicalApp.models import Company, Medicine, EmployeeSalary, BillDetails, CustomerRequest, CompanyAccount, \
+
+# Register your models here.
+from MedicalApp.models import Company, Medicine, EmployeeSalary, BillDetails, CustomerRequest, CompanyAccount, \
     CompanyBank, EmployeeBank, Bill, Customer, Employee, MedicalDetails
 
 admin.site.register(Company)
@@ -14,5 +16,3 @@ admin.site.register(CustomerRequest)
 admin.site.register(CompanyAccount)
 admin.site.register(CompanyBank)
 admin.site.register(EmployeeBank)
-
-# Register your models here.
