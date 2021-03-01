@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1>About Page</h1>
+    <p>This is a Template !</p>
+    <p></p>
+    <p>My name is {{name}} my DOB is {{dob}} and I reside in PIN Code {{pin}}</p>
+    <p></p>
+    <p>My family members are:-</p>
+<ul>
+    {%for i in family%}
+        {%if i == "Baba" %}
+            <li>Prasanta Kumar Das</li>
+        {%else%}
+            <li>{{forloop.counter}} - {{i}}</li>
+        {%endif%}
+    {%endfor%}
+</ul>
+{%endblock%}
