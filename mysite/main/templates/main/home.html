@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'main/header.html' %}
+<body>
+{% include 'main/nav.html' %}
+{% include 'main/messages.html' %}
+
+<div class="container">
+<br>
+{% block content %}
+<h3>Tutorial Category List</h3>
+ <div class="row">
+        {% for cat in categories %}
+            <div class="col s12 m6 l4">
+                <a href="{{cat.category_slug}}" style="color:#ee6e73">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title">{{cat.tutorial_category}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{cat.category_summary}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+ <h3>Tutorial Series List</h3>
+ <div class="row">
+        {% for ser in series %}
+            <div class="col s12 m6 l4">
+                <a href="{{cat.category_slug}}" style="color:#ee6e73">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title">{{ser.tutorial_series}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{ser.tutorial_category}}</p>
+                            <p>{{ser.series_summary}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+<h3>Tutorial List</h3>
+ <div class="row">
+        {% for tut in tutorial %}
+            <div class="col s12 m6 l4">
+                <a href="{{tut.tutorial_slug}}" style="color:#ee6e73">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title">{{tut.tutorial_title}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{tut.tutorial_content}}</p>
+                            <p>{{tut.tutorial_published}}</p>
+                            <p>Series - {{tut.tutorial_series}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
+    </div>
+ <script>M.AutoInit();</script>
+</body>
+</html>
