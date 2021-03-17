@@ -1,9 +1,9 @@
-{%extends 'blog/base.html'%}
-{%block content%}
-        <h2>You have been Logged Out Sucessfully !</h2>
-        <div class="border-top pt3">
-            <small class="text-muted">Login Again? <a href="{%url 'login'%}">SignIn Again</a> </small>
-
+{% extends 'blog/base.html' %}
+{% block content%}
+    <div>
+        <h2>Successfully logged out !!!</h2>
+    </div>
+    <div class="border-top pt3">
+            <small class="text-muted">Want to login again ? <a href="{%url 'users:login' %}">Sign In</a></small>
         </div>
-
-{%endblock%}
+{% endblock%}

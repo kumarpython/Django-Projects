@@ -1,19 +1,19 @@
-from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.shortcuts import render, redirect
+from .form import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm,UserUpdateForm,ProfileUpdateForm
 
 
 def register(request):
     if request.method=="POST":
-        form=UserRegistrationForm(request.POST)
+        form=UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             username=form.cleaned_data.get('username')
-            messages.success(request,f'Account created for {username} ! Please Login Now')
-            return redirect('login')
+            messages.success(request, f'New account created for {username}. Please Login Now ')
+            return redirect('users:login')
     else:
-        form=UserRegistrationForm()
+        form = UserRegisterForm()
     return render(request,'users/register.html',{'form':form})
 
 
@@ -22,11 +22,13 @@ def profile(request):
     if request.method == "POST":
         u_form=UserUpdateForm(request.POST,instance=request.user)
         p_form=ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        if u_form.is_valid() and p_form.is_valid():
+        if u_form.is_valid() & p_form.is_valid() :
             u_form.save()
             p_form.save()
-            messages.success(request, f'Account updated for {request.user.username}')
-            return redirect('profile')
+            username = u_form.cleaned_data.get('username')
+            messages.success(request, f'Profile change saved successfully for {username}.')
+            return redirect('users:profile')
+
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
