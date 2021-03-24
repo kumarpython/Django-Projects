@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!-- Prism CSS -->
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'main/css/materialize.min.css' %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="{% static 'main/js/materialize.min.js' %}"></script>
+
+
+    <meta charset="UTF-8">
+    <title>SENTDEX TUTORIAL</title>
+</head>
+<body>
+{% include 'main/nav.html' %}
+<script>M.AutoInit();</script>
+<div class="container">
+<br>
+{% block content %}
+<div class="row">
+     {% for cat in categories %}
+            <div class="col s12 m6 l4">
+                <a href="{{cat.category_slug}}">
+                    <div class="card hoverable grey lighten-4">
+                        <div class="card-content black-text">
+                            <div class="card-title">Category - {{cat.tutorial_category}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{cat.category_summary}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+  </div>
+{% endblock %}
+  </div>
+<br>
+{% include 'main/footer.html' %}
+<!-- Prism JS -->
+</body>
+<script src="{% static "tinymce/js/prism.js" %}"></script>
+</html>

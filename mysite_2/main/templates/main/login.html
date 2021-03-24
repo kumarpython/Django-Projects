@@ -1,0 +1,10 @@
+{% extends 'main/home.html' %}
+
+{% block content %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button style="background-color:#ee6e73" class="btn btn-outline-info" type="submit">Login</button>
+    </form>
+{% endblock %}
