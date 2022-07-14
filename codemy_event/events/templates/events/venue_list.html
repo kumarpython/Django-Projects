@@ -1,0 +1,31 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<center class="row"><h3>Search Venues</h3>
+    <form class="d-flex" method="post" action="{% url 'events:searchvenue' %}">{% csrf_token %}
+        <input class="form-control me-2" placeholder="Venue Search" name="query">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+</form>
+</center>
+
+<center class="row"><h1>Venues</h1></center>
+<br/>
+{% for venue in venues %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <img src="{{ venue.img.url }}" class="card-img-top" alt="{{ venue.name }}"
+        <h5 class="card-title">{{ venue.name }}</h5>
+        <p class="card-text">{{ venue.address }}</p>
+        <p class="card-text">{{ venue.zipcode }}</p>
+        <p class="card-text">{{ venue.email }}</p>
+        <p class="card-text">{{ venue.phone }}</p>
+        <p class="card-text">{{ venue.web }}</p>
+        <a href="{% url 'events:indvenue' venue.id %}" class="btn btn-dark">About {{ venue.name }}</a>
+    </div>
+</div>
+<br/>
+{% endfor %}
+
+<a href="{% url 'events:addvenue' %}" class="btn btn-outline-dark">Add New Venue</a>
+{%endblock %}

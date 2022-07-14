@@ -1,0 +1,9 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center><h1>Results for : {{ query }}</h1></center>
+<br/>
+{% for result in results %}
+    <p>{{ result }}</p>
+{% endfor %}
+{%endblock %}

@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<div class="shadow p-4 mb-5 bg-body rounded">
+  <h1>Register</h1>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Register" class="btn btn-dark">
+  </form>
+</div>
+
+{%endblock %}
+

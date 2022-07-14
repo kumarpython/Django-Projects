@@ -1,0 +1,33 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<center class="row"><h3>Search Events</h3>
+    <form class="d-flex" method="post" action="{% url 'events:searchevent' %}">{% csrf_token %}
+        <input class="form-control me-2" placeholder="Event Search" name="query">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+    </form>
+</center>
+
+
+<center class="'row"><h1>Events</h1></center>
+<br/>
+{% for event in events %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <img src="{{ event.img.url }}" class="card-img-top" alt="{{ event.name }}"
+            <h5 class="card-title">Name : {{ event.name }}</h5>
+            <p class="card-text">Date : {{ event.date }}</p>
+            <p class="card-text">Till : {{ event.till }}</p>
+            <p class="card-text"><a href="{% url 'events:venue-event' event.id %}">Venue : {{ event.venue }}</a></p>
+            <p class="card-text">Manager : {{ event.manager }}</p>
+            <p class="card-text">Description : {{ event.desc }}</p>
+            {% for user in event.attendees.all %}<p class="card-text">{{ user }}</p>{% endfor %}
+            <a href="{% url 'events:indevent' event.id %}" class="btn btn-dark">About {{ event.name }}</a>
+        </div>
+    </div>
+<br/>
+{% endfor %}
+
+<a href="{% url 'events:addevent' %}" class="btn btn-outline-dark">Add New Event</a>
+{%endblock %}

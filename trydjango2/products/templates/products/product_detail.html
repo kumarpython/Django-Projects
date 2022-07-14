@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+    <li>InApp - {{ title }}</li>
+    <li>{{ description }}</li>
+    <li>{{ price }}</li>
+</ul>
+<a href="edit">Edit</a>
+<a href="delete">Delete</a>
+{% endblock%}

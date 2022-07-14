@@ -1,0 +1,7 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div><h4 class="alert alert-info">Password change successful, please login with NEW  password</h4></div>
+<div><a class="ml-2" href="{% url 'login' %}">Login</a></div>
+
+{% endblock %}

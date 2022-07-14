@@ -1,0 +1,9 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h1>Add Event</h1>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Event" class="btn btn-dark">
+</form>
+{%endblock %}

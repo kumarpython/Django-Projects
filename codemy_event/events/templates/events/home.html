@@ -1,0 +1,34 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 col-md-4">
+
+        <h2>Events this month</h2>
+        {% if events %}
+            {% for event in events %}
+                <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <img src="{{ event.img.url }}" class="card-img-top" alt="{{ event.name }}"
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">{{ event.date }}</p>
+                         <p class="card-text"><a href="{% url 'events:venue-event' event.id %}">{{ event.venue }}</a></p>
+                        <p class="card-text">{{ event.manager }}</p>
+                        {% for user in event.attendees.all %}<p class="card-text">{{ user }}</p>{% endfor %}
+                        <a href="{% url 'events:indevent' event.id %}" class="btn btn-dark">About {{ event.name }}</a>
+                </div>
+            </div>
+            <br/>
+        {% endfor %}
+    {% else %}
+        <h5>Sorry, no Events this month</h5>
+    {% endif %}
+        </div>
+
+         <div class="col-6 col-md-4"><h1>Welcome {{ name }}!</h1></div>
+        <div class="col-6 col-md-4"><h3>Calendar for {{ month }} / {{ year }}</h3>{{ cal|safe }}</div>
+    </div>
+</div>
+
+{%endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for obj in object_list %}
+        <a HREF="{{ obj.get_url }}">{{forloop.counter}} - {{ obj.title }}</a>
+        <p>{{ obj.description }}</p>
+        <p>{{ obj.price }}</p>
+        <p>{{ obj.summary }}</p>
+    {% endfor %}
+
+{% endblock%}

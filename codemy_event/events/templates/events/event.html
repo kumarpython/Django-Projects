@@ -1,0 +1,23 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center><h1>Event - {{ event.name }}</h1></center>
+<br/>
+<div class="card" style="width: 18rem;">
+    <!--      <img src="..." class="card-img-top" alt="...">-->
+    <div class="card-body">
+        <img src="{{ event.img.url }}" class="card-img-top" alt="{{ event.name }}"
+        <h5 class="card-title">Name : {{ event.name }}</h5>
+        <p class="card-text">Date : {{ event.date }}</p>
+        <p class="card-text">Venue : {{ event.venue }}</p>
+        <p class="card-text">Manager : {{ event.manager }}</p>
+        <p class="card-text">Description : {{ event.desc }}</p>
+        {% for user in event.attendees.all %}<p class="card-text">{{ user }}</p>{% endfor %}
+    </div>
+</div>
+{% if request.user == event.manger %}
+    <a href="{% url 'events:editevent' event.id %}" class="btn btn-dark">Edit Event</a>
+    <a href="{% url 'events:deleteevent' event.id %}" class="btn btn-danger">Delete Event</a>
+{% endif %}
+<a href="{% url 'events:addevent' %}" class="btn btn-outline-dark">Add New Event</a>
+{%endblock %}

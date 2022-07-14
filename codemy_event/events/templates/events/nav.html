@@ -1,0 +1,39 @@
+<nav class="navbar sticky-top navbar-expand-lg bg-secondary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'events:home' %}">My Club</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'events:home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'events:cal' '2022' '12'%}">December</a></li>
+
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="Venues"  href="{% url 'events:venues' %}"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">Venues</a>
+                        <ul class="dropdown-menu" aria-labelledby="Venues">
+                             <li class="nav-item"><a class="nav-link" href="{% url 'events:venues' %}">Venues</a></li>
+                             <li class="nav-item"><a class="nav-link" href="{% url 'events:addvenue' %}">Add Venue</a></li>
+                             <li class="nav-item"><a class="nav-link" href="{% url 'events:venuetext' %}">Venue Txt</a></li>
+                             <li class="nav-item"><a class="nav-link" href="{% url 'events:venuecsv' %}">Venue CSV</a></li>
+                        </ul>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="Events"  href="{% url 'events:events' %}"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
+                        <ul class="dropdown-menu" aria-labelledby="Events">
+                          <li class="nav-item"><a class="nav-link" href="{% url 'events:events' %}">Events</a></li>
+                          <li class="nav-item"><a class="nav-link" href="{% url 'events:addevent' %}">Add Event</a></li>
+                          {% if user.is_superuser %}<li class="nav-item"><a class="nav-link" href="{% url 'events:approval' %}">Approval</a></li>{% endif %}
+                        </ul>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user:logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user:register' %}">Register</a></li>
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

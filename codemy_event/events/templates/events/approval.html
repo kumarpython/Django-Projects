@@ -1,0 +1,36 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h1>Admin Event Approval</h1>
+
+{% for event in events %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <img src="{{ event.img.url }}" class="card-img-top" alt="{{ event.name }}"
+            <h5 class="card-title">Name : {{ event.name }}</h5>
+
+            {% if event.approved %}
+                <p class="form-check">Approved :
+                    <input class="form-check-input" type="checkbox" checked="checked" value="{{ event.id }}" name="boxes">
+                </p>
+            {% else %}
+                <p class="form-check">Approved :
+                    <form method="post">{% csrf_token %}
+                        <input class="form-check-input" type="checkbox" value="{{ event.id }}" name="boxes">
+                        <button class="btn btn-sm btn-outline-dark" type="submit">Approve</button>
+                    </form>
+                </p>
+            {% endif %}
+
+            <p class="card-text">Date : {{ event.date }}</p>
+            <p class="card-text">Till : {{ event.till }}</p>
+            <p class="card-text">Venue : {{ event.venue }}</p>
+            <p class="card-text">Manager : {{ event.manager }}</p>
+            <p class="card-text">Description : {{ event.desc }}</p>
+            {% for user in event.attendees.all %}<p class="card-text">{{ user }}</p>{% endfor %}
+            <a href="{% url 'events:indevent' event.id %}" class="btn btn-dark">About {{ event.name }}</a>
+        </div>
+    </div>
+    <br/>
+{% endfor %}
+{%endblock %}

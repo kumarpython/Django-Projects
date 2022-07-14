@@ -1,0 +1,24 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center><h1>Venue - {{ venue.name }}</h1></center>
+<br/>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <img src="{{ venue.img.url }}" class="card-img-top" alt="{{ venue.name }}">
+        <h5 class="card-title">Name : {{ venue.name }}</h5>
+        <p class="card-text">Owner : {{ venue.owner }}</p>
+        <p class="card-text">Address : {{ venue.address }}</p>
+        <p class="card-text">Zip-Code : {{ venue.zipcode }}</p>
+        <p class="card-text">Email : {{ venue.email }}</p>
+        <p class="card-text">Phone : {{ venue.phone }}</p>
+        <p class="card-text">Web : {{ venue.web }}</p>
+        <a href="{% url 'events:venue-event' venue.id %}" class="btn btn-dark">Events at {{ venue.name }}</a>
+    </div>
+</div>
+{% if request.user == venue.owner %}
+    <a href="{% url 'events:editvenue' venue.id %}" class="btn btn-dark">Edit Venue</a>
+    <a href="{% url 'events:deletevenue' venue.id %}" class="btn btn-danger">Delete Venue</a>
+{% endif %}
+<a href="{% url 'events:addvenue' %}" class="btn btn-outline-dark">Add New Venue</a>
+{%endblock %}

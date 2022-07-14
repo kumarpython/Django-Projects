@@ -1,0 +1,9 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<form>
+    <h1>Are you sure you want to delete Event-{{ event }}</h1>
+    <input type="submit" value="Delete Event" name="go" class="btn btn-danger">
+    <a href="{% url 'events:indevent' event.id %}" class="btn btn-outline-dark">Cancel</a>
+</form>
+{%endblock %}
