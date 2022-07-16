@@ -1,2 +1,2 @@
 # Django-Projects
-Projects created in Django Framework
+Python Django Web Development Projects I completed while learning DJANGO Framework
