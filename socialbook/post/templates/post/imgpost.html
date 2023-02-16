@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="card z-depth-2">
+        <div class="center">
+            <small class="card-title">By:-{{ post.author }} on {{ post.on|date:"j-n-y" }}</small>
+        </div>
+        <div class="card-image">
+            <img src="{{ post.image.url }}" class="responsive-img">
+        </div>
+        <div class="card-content">
+          <p class="flow-text">{{ post.text }}</p>
+        </div>
+        <div class="card-action">
+            <a href="#"><i class="material-icons left">thumb_up</i></a>
+            <a href="#"><i class="material-icons center">comment</i></a>
+            <a href="#"><i class="material-icons center">share</i></a>
+            <a href="{% url 'post:detail' post.id %}">More...</a>
+        </div>
+    </div>
+</div>

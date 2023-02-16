@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>SocialBook</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    {% if messages %}
+        {% include 'messages.html' %}
+    {% endif %}
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% include 'footer.html' %}
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>

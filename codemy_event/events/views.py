@@ -14,7 +14,7 @@ from .models import Event, Venue
 def home(request, year=datetime.date.today().year, month=datetime.date.today().month) :
     cal = HTMLCalendar().formatmonth(year, month)
     curr_yr = datetime.date.today().year
-    return render(request, 'events/index.html',
+    return render(request, 'events/base.html',
                   {'name' : request.user, 'year' : year, 'month' : month, 'cal' : cal,
                    'time' : datetime.time().strftime('%I:%M %p'), 'curr_yr' : curr_yr,
                    'events' : Event.objects.filter(date__year=year,date__month=month)})
@@ -24,7 +24,7 @@ def cal(request, year, month) :
     # month_number = int(list(calendar.month_name).index(month.title()))
     cal = HTMLCalendar().formatmonth(year, month)
     curr_yr = datetime.date.today().year
-    return render(request, 'events/index.html',
+    return render(request, 'events/base.html',
                   {'name' : request.user, 'year' : year, 'month' : month, 'cal' : cal,
                    'time' : datetime.time().strftime('%I:%M %p'), 'curr_yr' : curr_yr})
 

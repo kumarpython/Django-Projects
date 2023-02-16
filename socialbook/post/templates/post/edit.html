@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="card col s9"><h1>Edit</h1>
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Edit" class="btn indigo darken-2">
+        </form>
+    </div>
+
+    <div class="col s3">Right - Suggestions</div>
+</div>
+{% endblock %}

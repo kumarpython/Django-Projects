@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="carousel carousel-slider">
+    <div class="carousel-fixed-item">
+        <img src="{{ instance.pic.url }}" class="circle responsive-img left" />
+        <h4 class="white-text">{{ instance.fname }}{{ instance.lname }}</h4>
+        {% if request.user.id != instance.user.id %}
+         <form method="post">{% csrf_token %}
+             <input aria-label="Add Friend" type="submit" name="Add Friend" value="{{ instance.user.id }}" class="btn indigo darken-2 right"><i class="material-icons left">person_add</i>Add Friend</input>
+         </form>
+        {% endif %}
+    </div>
+    <div>
+        <img src="{% static 'images/1.jpg' %}" />
+    </div>
+</div>
+<div class="container">
+    <h5>Gender : {{instance.gender }}</h5>
+    <h5>Email : {{instance.email }}</h5>
+    <h5>Mobile : {{instance.mobile }}</h5>
+    <h5>Date of Birth : {{instance.dob }}</h5>
+    <h5>Marital Status : {{instance.married }}</h5>
+    <h5>Residing Country : {{instance.country }}</h5>
+    <h5>Residing State : {{instance.state }}</h5>
+    <h5>Residing City : {{instance.city }}</h5>
+    <h5>Residing Zipcode : {{instance.zipcode }}</h5>
+</div>
+<a class="btn indigo darken-2" href="{% url 'profiles:edit' user.id %}">Update</a>
+<br/><br/>
+{% endblock %}

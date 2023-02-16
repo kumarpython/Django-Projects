@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col s9">
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn indigo darken-2">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

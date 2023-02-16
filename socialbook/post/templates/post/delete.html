@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+    <h1>Are you sure you want to delete the Post??</h1>
+    <input type="submit" value="Delete" class="btn red">
+    <a href="{% url 'post:detail' post.id %}" class="btn indigo darken-2">Cancel</a>
+</form>
+{%endblock %}

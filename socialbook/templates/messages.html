@@ -1,0 +1,3 @@
+{% for message in messages %}
+    <a onclick="M.toast({html: {{ message }}})">{{ message }}!</a>
+{% endfor %}

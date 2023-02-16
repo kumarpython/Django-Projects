@@ -1,0 +1,19 @@
+{% extends 'event/base.html' %}
+
+{% block content %}
+
+    <h1>All Events</h1>
+        {% for event in events %}
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{event.name }}</h5>
+                <p>Date :{{ event.event_date }}</p>
+                <p>Venue :{{ event.venue }}</p>
+                <p>Manager :{{ event.manager }}</p>
+                <p class="card-text">Description :{{ event.description }}</p>
+                <p>Attendees :{% for attendee in event.attendees.all %} {{ attendee }},{% endfor %}</p>
+                <a href="{% url 'indevent' event.id %}" class="btn btn-secondary">Details</a>
+            </div>
+        {% endfor %}
+{% endblock %}

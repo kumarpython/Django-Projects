@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col s3">
+        <img src="{{ pic }}" class="materialboxed responsive-img"/>
+        <ul class="container">
+            <li><a href="{% url 'profiles:profile' user.id %}"><i class="material-icons left">face</i>View Profile</a></li>
+            <li><a href="{% url 'profiles:friends' user.id %}"><i class="material-icons left">person</i>Friends</a></li>
+            <li><a href="{% url 'profiles:friends' user.id %}"><i class="material-icons left">group</i>Groups</a></li>
+        </ul>
+    </div>
+
+    <div class="col s6">
+        <div class=" row card center">
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form }}
+                <input type="submit" value="Post" class="btn indigo darken-2">
+            </form>
+        </div>
+        {% for post in posts %}
+            {% if post.image %}
+                {% include 'post/imgpost.html' %}
+            {% elif post.url %}
+                {% include 'post/urlpost.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    </div>
+
+    <div class="col s3">Right - Suggestions
+
+    </div>
+</div>
+
+{% endblock %}

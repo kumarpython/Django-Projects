@@ -1,0 +1,21 @@
+{% load static %}
+<nav class="nav-wrapper indigo darken-2">
+  <div class="nav-wrapper">
+    <a href="{% url 'post:home' %}" class="brand-logo">Logo</a>
+    {% if user.is_authenticated %}
+    <ul class="right hide-on-med-and-down">
+        <li><i class="material-icons">search</i></li>
+        <li><a href="{% url 'post:home' %}"><i class="material-icons">home</i></a></li>
+        <li><a href="#"><i class="material-icons right">notifications</i></a></li>
+        <li><img src="{{ user.userprofile.pic.url }}" class="circle responsive-img" height="70" width="70"/></li>
+        <li><a href="{% url 'profiles:profile'  user.id %}">{{ user.userprofile.fname }}</a></li>
+        <li><a href="{% url 'profiles:logout' %}" class="waves-effect  indigo">Logout<i class="material-icons right">account_box</i></a></li>
+    </ul>
+    {% else %}
+    <ul class="right hide-on-med-and-down">
+        <li><a href="{% url 'profiles:register' %}">Register<i class="material-icons right">account_box</i></a></li>
+        <li><a href="{% url 'profiles:login' %}">Login<i class="material-icons right">account_circle</i></a></li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
